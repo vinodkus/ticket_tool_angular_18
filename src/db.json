@@ -1,0 +1,48 @@
+{
+    "users": [
+      {
+        "employeeId": 1,
+        "contactNo": "1111122222",
+        "deptId": 1,
+        "emailId": "vinod@gmail.com",
+        "gender": "male",
+        "password": "vinod"
+      },
+      {
+        "employeeId": 2,
+        "contactNo": "2222211111",
+        "deptId": 2,
+        "emailId": "user@gmail.com",
+        "gender": "female",
+        "password": "user123"
+      }
+    ],
+    "departments": [
+      {
+        "deptId": 1,
+        "deptName": "IT"
+      },
+      {
+        "deptId": 2,
+        "deptName": "HR"
+      },
+      {
+        "deptId": 3,
+        "deptName": "Engineering"
+      },
+      {
+        "deptId": 4,
+        "deptName": "Medical"
+      },
+      {
+        "deptId": 5,
+        "deptName": "Software"
+      },
+      {
+        "deptId": 6,
+        "deptName": "Hardware"
+      }
+    ]
+}
+   
+  
