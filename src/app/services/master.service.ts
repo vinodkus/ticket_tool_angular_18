@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 export interface Department {
   deptId: number;
   deptName: string;
+  createdDate:Date
 }
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,7 @@ export interface Department {
 export class MasterService {
   //apiUrl:string="http://localhost:3000/users";
   apiUrl: string = 'http://localhost:3000/';
+  url:string='';
   constructor(private http: HttpClient) {}
   login(obj: any) {
     const { emailId, password } = obj;
@@ -41,7 +43,9 @@ export class MasterService {
 
   // Get all departments
   getAllDepts(): Observable<Department[]> {
-    return this.http.get<Department[]>(this.apiUrl);
+    this.url = `${this.apiUrl}departments`;
+   // return this.http.get<Department[]>(this.apiUrl+"departments");
+   return this.http.get<Department[]>(this.url);
   }
 
   // Create a new department

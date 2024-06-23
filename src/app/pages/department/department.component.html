@@ -1,1 +1,64 @@
-<p>department works!</p>
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success">
+                Department List
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>Department Name</th>
+                                    <th>Created Date</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(item of deptList; track $index)
+                                {
+
+                                    <tr>
+                                        <td>{{$index+1}}</td>
+                                        <td>{{item.deptName}}</td>
+                                        <td>{{item.createdDate | date:'dd-MMM-yyyy'}}</td>
+                                        <td></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success">
+                New Department
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for="">Department Name</label>
+                        <input type="text" class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for="">Date of Creation</label>
+                        <input type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-6 text-center">
+                        <button class="btn btn-secondary">Reset</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        <button class="btn btn-success">Save Dept</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

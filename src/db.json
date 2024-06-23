@@ -20,27 +20,38 @@
     "departments": [
       {
         "deptId": 1,
-        "deptName": "IT"
+        "deptName": "IT",
+        "createdDate":"2024-03-28"
       },
       {
         "deptId": 2,
-        "deptName": "HR"
+        "deptName": "HR",
+        "createdDate":"2024-03-28"
+
       },
       {
         "deptId": 3,
-        "deptName": "Engineering"
+        "deptName": "Engineering",
+        "createdDate":"2024-03-28"
+
       },
       {
         "deptId": 4,
-        "deptName": "Medical"
+        "deptName": "Medical",
+        "createdDate":"2024-03-28"
+
       },
       {
         "deptId": 5,
-        "deptName": "Software"
+        "deptName": "Software",
+        "createdDate":"2024-03-28"
+
       },
       {
         "deptId": 6,
-        "deptName": "Hardware"
+        "deptName": "Hardware",
+        "createdDate":"2024-03-28"
+
       }
     ]
 }

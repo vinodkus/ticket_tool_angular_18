@@ -1,48 +1,52 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MasterService, Department } from '../../services/master.service';
+import { BrowserModule } from '@angular/platform-browser';
+// import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [],
+  imports: [BrowserModule],
   templateUrl: './department.component.html',
   styleUrl: './department.component.css',
 })
 export class DepartmentComponent implements OnInit {
   masterSrv = inject(MasterService);
-  departments: Department[] = [];
-  newDepartment: Department = { deptId: 0, deptName: '' };
+  deptList: Department[] = [];
+  newDepartment: Department = { deptId: 0, deptName: '', createdDate: new Date()  };
 
   ngOnInit(): void {
     this.getAllDepts();
   }
   getAllDepts(): void {
     this.masterSrv.getAllDepts().subscribe((data) => {
-      this.departments = data;
+      debugger;
+      console.log(data);
+      this.deptList = data;
     });
   }
 
   createDept(): void {
     this.masterSrv.createNewDept(this.newDepartment).subscribe((department) => {
-      this.departments.push(department);
-      this.newDepartment = { deptId: 0, deptName: '' }; // Reset the form
+      this.deptList.push(department);
+      this.newDepartment = { deptId: 0, deptName: '', createdDate: new Date()  }; // Reset the form
     });
   }
 
   updateDept(department: Department): void {
     this.masterSrv.updateDept(department).subscribe((updatedDepartment) => {
-      const index = this.departments.findIndex(
+      const index = this.deptList.findIndex(
         (d) => d.deptId === updatedDepartment.deptId
       );
       if (index !== -1) {
-        this.departments[index] = updatedDepartment;
+        this.deptList[index] = updatedDepartment;
       }
     });
   }
 
   deleteDept(deptId: number): void {
     this.masterSrv.deleteDeptById(deptId).subscribe(() => {
-      this.departments = this.departments.filter(
+      this.deptList = this.deptList.filter(
         (department) => department.deptId !== deptId
       );
     });
