@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
   selector: 'app-department',
   standalone: true,
   imports: [CommonModule],
-  // imports: [],
 
   templateUrl: './department.component.html',
   styleUrl: './department.component.css',
