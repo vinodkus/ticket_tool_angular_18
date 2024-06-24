@@ -1,12 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MasterService, Department } from '../../services/master.service';
-import { BrowserModule } from '@angular/platform-browser';
-// import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [BrowserModule],
+  imports: [CommonModule],
+  // imports: [],
+
   templateUrl: './department.component.html',
   styleUrl: './department.component.css',
 })
