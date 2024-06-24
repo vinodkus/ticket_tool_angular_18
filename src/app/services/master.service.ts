@@ -50,8 +50,10 @@ export class MasterService {
 
   // Create a new department
   createNewDept(department: Department): Observable<Department> {
+    this.url = `${this.apiUrl}departments`;
+
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-    return this.http.post<Department>(this.apiUrl, department, { headers });
+    return this.http.post<Department>(this.url, department, { headers });
   }
 
   // Update an existing department

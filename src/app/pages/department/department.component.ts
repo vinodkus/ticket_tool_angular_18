@@ -1,11 +1,12 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MasterService, Department } from '../../services/master.service';
-import { CommonModule } from '@angular/common';
+import {  DatePipe } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [CommonModule],
+  imports: [DatePipe,FormsModule],
 
   templateUrl: './department.component.html',
   styleUrl: './department.component.css',
@@ -13,7 +14,11 @@ import { CommonModule } from '@angular/common';
 export class DepartmentComponent implements OnInit {
   masterSrv = inject(MasterService);
   deptList: Department[] = [];
-  newDepartment: Department = { deptId: 0, deptName: '', createdDate: new Date()  };
+  newDepartment: Department = {
+    deptId: 0,
+    deptName: '',
+    createdDate: new Date(),
+  };
 
   ngOnInit(): void {
     this.getAllDepts();
@@ -26,11 +31,13 @@ export class DepartmentComponent implements OnInit {
     });
   }
 
-  createDept(): void {
+  saveDept(): void {
+    debugger;
     this.masterSrv.createNewDept(this.newDepartment).subscribe((department) => {
       this.deptList.push(department);
-      this.newDepartment = { deptId: 0, deptName: '', createdDate: new Date()  }; // Reset the form
+      this.newDepartment = { deptId: 0, deptName: '', createdDate: new Date() }; // Reset the form
     });
+    this.getAllDepts();
   }
 
   updateDept(department: Department): void {
