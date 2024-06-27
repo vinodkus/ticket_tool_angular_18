@@ -68,7 +68,9 @@ export class MasterService {
 
   // Delete a department by ID
   deleteDeptById(deptId: number): Observable<void> {
-    const url = `${this.apiUrl}/${deptId}`;
-    return this.http.delete<void>(url);
+    debugger;
+    this.url = `${this.apiUrl}departments`;
+    const url1 = `${this.url}/${deptId}`;
+    return this.http.delete<void>(url1);
   }
 }

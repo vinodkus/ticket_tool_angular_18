@@ -45,7 +45,9 @@ export class DepartmentComponent implements OnInit {
     });
     this.getAllDepts();
   }
-
+  onEdit(item:any){
+this.newDepartment = item;
+  }
   updateDept(department: Department): void {
     this.masterSrv.updateDept(department).subscribe((updatedDepartment) => {
       const index = this.deptList.findIndex(

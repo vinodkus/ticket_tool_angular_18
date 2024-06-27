@@ -28,9 +28,9 @@
                                         date:'dd-MMM-yyyy'}}</td>
                                     <td class="text-center">
                                         <button
-                                            class="btn btn-primary">Edit</button>
+                                            class="btn btn-primary" (click)="onEdit(item)">Edit</button>
                                         <button
-                                            class="btn btn-danger mx-2">Delete</button>
+                                            class="btn btn-danger mx-2" (click)="deleteDept(item.deptId)">Delete</button>
                                     </td>
                                 </tr>
                                 }
