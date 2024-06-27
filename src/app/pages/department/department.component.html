@@ -12,23 +12,26 @@
                                 <tr>
                                     <th>Sr No</th>
                                     <th>Dept Id</th>
-
                                     <th>Department Name</th>
                                     <th>Created Date</th>
-                                    <th>Action</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @for(item of deptList; track $index)
                                 {
-
                                 <tr>
                                     <td>{{$index+1}}</td>
                                     <td>{{item.deptId}}</td>
                                     <td>{{item.deptName}}</td>
                                     <td>{{item.createdDate |
                                         date:'dd-MMM-yyyy'}}</td>
-                                    <td></td>
+                                    <td class="text-center">
+                                        <button
+                                            class="btn btn-primary">Edit</button>
+                                        <button
+                                            class="btn btn-danger mx-2">Delete</button>
+                                    </td>
                                 </tr>
                                 }
                             </tbody>
