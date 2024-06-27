@@ -11,6 +11,8 @@
                             <thead>
                                 <tr>
                                     <th>Sr No</th>
+                                    <th>Dept Id</th>
+
                                     <th>Department Name</th>
                                     <th>Created Date</th>
                                     <th>Action</th>
@@ -20,12 +22,14 @@
                                 @for(item of deptList; track $index)
                                 {
 
-                                    <tr>
-                                        <td>{{$index+1}}</td>
-                                        <td>{{item.deptName}}</td>
-                                        <td>{{item.createdDate | date:'dd-MMM-yyyy'}}</td>
-                                        <td></td>
-                                    </tr>
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.deptId}}</td>
+                                    <td>{{item.deptName}}</td>
+                                    <td>{{item.createdDate |
+                                        date:'dd-MMM-yyyy'}}</td>
+                                    <td></td>
+                                </tr>
                                 }
                             </tbody>
                         </table>
@@ -42,12 +46,15 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12">
-                        <label for="">Department Name</label>
-                        <input type="text" [(ngModel)]="newDepartment.deptName" class="form-control">
+                        <label for>Department Name</label>
+                        <input type="text" [(ngModel)]="newDepartment.deptName"
+                            class="form-control">
                     </div>
                     <div class="col-12">
-                        <label for="">Date of Creation</label>
-                        <input type="date" [(ngModel)]="newDepartment.createdDate" class="form-control">
+                        <label for>Date of Creation</label>
+                        <input type="date"
+                            [(ngModel)]="newDepartment.createdDate"
+                            class="form-control">
                     </div>
                 </div>
                 <div class="row pt-3">
@@ -55,7 +62,8 @@
                         <button class="btn btn-secondary">Reset</button>
                     </div>
                     <div class="col-6 text-center">
-                        <button class="btn btn-success" (click)="saveDept()">Save Dept</button>
+                        <button class="btn btn-success"
+                            (click)="saveDept()">Save Dept</button>
                     </div>
                 </div>
             </div>

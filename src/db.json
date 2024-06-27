@@ -51,10 +51,16 @@
       "id": "c377"
     },
     {
-      "deptId": 6,
-      "deptName": "Hardware",
-      "createdDate": "2024-03-28",
-      "id": "5464"
+      "id": "49d2",
+      "deptId": 7,
+      "deptName": "d2",
+      "createdDate": "2024-06-28"
+    },
+    {
+      "id": "2306",
+      "deptId": 8,
+      "deptName": "d1",
+      "createdDate": "2024-06-28"
     }
   ]
 }

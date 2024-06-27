@@ -1,13 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
-
+import * as CryptoJS from 'crypto-js';
 
 export interface Department {
   deptId: number;
   deptName: string;
-  createdDate:Date
+  createdDate: Date;
 }
 @Injectable({
   providedIn: 'root',
@@ -15,7 +15,7 @@ export interface Department {
 export class MasterService {
   //apiUrl:string="http://localhost:3000/users";
   apiUrl: string = 'http://localhost:3000/';
-  url:string='';
+  url: string = '';
   constructor(private http: HttpClient) {}
   login(obj: any) {
     const { emailId, password } = obj;
@@ -40,19 +40,22 @@ export class MasterService {
         })
       );
   }
-
+  // generateGUID() {
+  //   return uuid();
+  // }
   // Get all departments
   getAllDepts(): Observable<Department[]> {
     this.url = `${this.apiUrl}departments`;
-   // return this.http.get<Department[]>(this.apiUrl+"departments");
-   return this.http.get<Department[]>(this.url);
+    // return this.http.get<Department[]>(this.apiUrl+"departments");
+    return this.http.get<Department[]>(this.url);
   }
 
   // Create a new department
   createNewDept(department: Department): Observable<Department> {
     this.url = `${this.apiUrl}departments`;
-
+    debugger;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    debugger;
     return this.http.post<Department>(this.url, department, { headers });
   }
 
