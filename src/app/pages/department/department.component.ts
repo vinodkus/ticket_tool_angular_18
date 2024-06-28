@@ -1,13 +1,13 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { MasterService, Department } from '../../services/master.service';
-import { DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [DatePipe, FormsModule],
+  imports: [DatePipe, FormsModule,AsyncPipe],
 
   templateUrl: './department.component.html',
   styleUrl: './department.component.css',
@@ -45,9 +45,11 @@ export class DepartmentComponent implements OnInit {
     });
     this.getAllDepts();
   }
-  onEdit(item:any){
-this.newDepartment = item;
+
+  onEdit(item:Department):void{
+        this.newDepartment = item;
   }
+
   updateDept(department: Department): void {
     this.masterSrv.updateDept(department).subscribe((updatedDepartment) => {
       const index = this.deptList.findIndex(
@@ -60,10 +62,15 @@ this.newDepartment = item;
   }
 
   deleteDept(deptId: number): void {
-    this.masterSrv.deleteDeptById(deptId).subscribe(() => {
-      this.deptList = this.deptList.filter(
-        (department) => department.deptId !== deptId
-      );
-    });
+    debugger;
+    // this.masterSrv.deleteDeptById(deptId).subscribe(() => {
+    //   this.deptList = this.deptList.filter(
+    //     (department) => department.deptId !== deptId
+    //   );
+    // });
+    this.deptList = this.deptList.filter(
+      (department) => department.deptId !== deptId);
+    this.getAllDepts();
+
   }
 }
