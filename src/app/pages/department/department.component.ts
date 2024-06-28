@@ -16,6 +16,7 @@ export class DepartmentComponent implements OnInit {
   masterSrv = inject(MasterService);
   deptList: Department[] = [];
   newDepartment: Department = {
+    id:0,
     deptId: 0,
     deptName: '',
     createdDate: new Date(),
@@ -41,7 +42,7 @@ export class DepartmentComponent implements OnInit {
     this.newDepartment.deptId = maxDeptId + 1;
     this.masterSrv.createNewDept(this.newDepartment).subscribe((department) => {
       this.deptList.push(department);
-      this.newDepartment = { deptId: 0, deptName: '', createdDate: new Date() }; // Reset the form
+      this.newDepartment = {id:0, deptId: 0, deptName: '', createdDate: new Date() }; // Reset the form
     });
     this.getAllDepts();
   }
@@ -61,16 +62,21 @@ export class DepartmentComponent implements OnInit {
     });
   }
 
-  deleteDept(deptId: number): void {
+  deleteDept(id: number): void {
     debugger;
-    // this.masterSrv.deleteDeptById(deptId).subscribe(() => {
-    //   this.deptList = this.deptList.filter(
-    //     (department) => department.deptId !== deptId
-    //   );
-    // });
-    this.deptList = this.deptList.filter(
-      (department) => department.deptId !== deptId);
-    this.getAllDepts();
+
+    console.log('Deleting department with ID:', id);
+    this.masterSrv.deleteDeptById(id).subscribe({
+      next: () => {
+        console.log('Department deleted');
+        this.deptList = this.deptList.filter(
+          (department) => department.id !== id
+        );
+      },
+      error: (err) => {
+        console.error('Error deleting department:', err);
+      }
+    });
 
   }
 }

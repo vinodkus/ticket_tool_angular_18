@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, from } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as CryptoJS from 'crypto-js';
 
 export interface Department {
+  id:number;
   deptId: number;
   deptName: string;
   createdDate: Date;
@@ -67,10 +67,10 @@ export class MasterService {
   }
 
   // Delete a department by ID
-  deleteDeptById(deptId: number): Observable<void> {
+  deleteDeptById(id: number): Observable<void> {
     debugger;
-    this.url = `${this.apiUrl}departments`;
-    const url1 = `${this.url}/${deptId}`;
+    this.url = `${this.apiUrl}departments/`;
+    const url1 = `${this.url}${id}`;
     return this.http.delete<void>(url1);
   }
 }
