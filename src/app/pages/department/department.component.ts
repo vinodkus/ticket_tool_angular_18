@@ -16,7 +16,6 @@ export class DepartmentComponent implements OnInit {
   masterSrv = inject(MasterService);
   deptList: Department[] = [];
   newDepartment: Department = {
-    id:0,
     deptId: 0,
     deptName: '',
     createdDate: new Date(),
@@ -42,7 +41,8 @@ export class DepartmentComponent implements OnInit {
     this.newDepartment.deptId = maxDeptId + 1;
     this.masterSrv.createNewDept(this.newDepartment).subscribe((department) => {
       this.deptList.push(department);
-      this.newDepartment = {id:0, deptId: 0, deptName: '', createdDate: new Date() }; // Reset the form
+      this.newDepartment = { deptId: 0, deptName: '', createdDate: new Date() }; // Reset the form
+    
     });
     this.getAllDepts();
   }
@@ -62,21 +62,31 @@ export class DepartmentComponent implements OnInit {
     });
   }
 
-  deleteDept(id: number): void {
+  deleteDept(deptId: number): void {
     debugger;
-
-    console.log('Deleting department with ID:', id);
-    this.masterSrv.deleteDeptById(id).subscribe({
-      next: () => {
-        console.log('Department deleted');
-        this.deptList = this.deptList.filter(
-          (department) => department.id !== id
-        );
+    console.log('Deleting department with ID:', deptId);
+    this.masterSrv.getDeptByDeptId(deptId).subscribe({
+      next: (departments) => {
+        if (departments.length > 0) {
+          const department = departments[0];
+          this.masterSrv.deleteDeptById(department.id!).subscribe({
+            next: () => {
+              this.deptList = this.deptList.filter(
+                (dept) => dept.deptId !== deptId
+              );
+              console.log('Department deleted');
+            },
+            error: (err) => {
+              console.error('Error deleting department:', err);
+            },
+          });
+        } else {
+          console.error('Department not found');
+        }
       },
       error: (err) => {
-        console.error('Error deleting department:', err);
-      }
+        console.error('Error fetching department:', err);
+      },
     });
-
   }
 }
