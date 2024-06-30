@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* styles.css or styles.scss */
+
+/* styles.css or styles.scss */
+.custom-snackbar {
+    /* background-color: #f44336;  */
+    
+    /* Red background */
+    color: white; /* White text */
+    font-size: 16px; /* Font size */
+    text-align: center; /* Centered text */
+    display: inline-block; /* Inline-block to fit content */
+  }
+  
+  .custom-snackbar-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    height: 100vh; /* Full viewport height */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure it appears above other elements */
+    pointer-events: none; /* Allow clicking through the container */
+  }
+  
+  .custom-snackbar-container .mat-snack-bar-container {
+    pointer-events: auto; /* Enable clicking within the snackbar */
+  }
+  
+  

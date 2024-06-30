@@ -3,17 +3,20 @@ import { MasterService, Department } from '../../services/master.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { from } from 'rxjs';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [DatePipe, FormsModule,AsyncPipe],
+  imports: [MatSnackBarModule,DatePipe, FormsModule,AsyncPipe],
 
   templateUrl: './department.component.html',
   styleUrl: './department.component.css',
 })
 export class DepartmentComponent implements OnInit {
   masterSrv = inject(MasterService);
+  snackBar = inject(MatSnackBar);
   deptList: Department[] = [];
   newDepartment: Department = {
     deptId: 0,
@@ -72,13 +75,15 @@ export class DepartmentComponent implements OnInit {
       next: (departments) => {
         if (departments.length > 0) {
           const department = departments[0];
+          const deptName = department.deptName;
           this.masterSrv.deleteDeptById(department.id!).subscribe({
             next: () => {
               this.deptList = this.deptList.filter(
                 (dept) => dept.deptId !== deptId
               );
               console.log('Department deleted');
-              alert('Department deleted')
+              this.showDeleteAlert(deptName);
+             // alert('Department deleted')
             },
             error: (err) => {
               console.error('Error deleting department:', err);
@@ -93,4 +98,15 @@ export class DepartmentComponent implements OnInit {
       },
     });
   }
+
+  showDeleteAlert(deptName: string): void {
+    this.snackBar.open(`Department: ${deptName} deleted successfully`, 'Close', {
+      duration: 3000, // Duration in milliseconds
+      horizontalPosition: 'center', // Center horizontally
+      verticalPosition: 'top', // We will override this with CSS
+      panelClass: ['custom-snackbar', 'custom-snackbar-container'] // Apply the custom CSS classes
+    });
+  }
+  
+  
 }
