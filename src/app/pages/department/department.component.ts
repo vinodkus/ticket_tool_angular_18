@@ -50,7 +50,10 @@ export class DepartmentComponent implements OnInit {
   onEdit(item:Department):void{
         this.newDepartment = item;
   }
-
+  resetDept():void{
+    debugger;
+      this.newDepartment = { deptId: 0, deptName: '', createdDate: new Date() };
+  }
   updateDept(department: Department): void {
     this.masterSrv.updateDept(department).subscribe((updatedDepartment) => {
       const index = this.deptList.findIndex(
@@ -75,6 +78,7 @@ export class DepartmentComponent implements OnInit {
                 (dept) => dept.deptId !== deptId
               );
               console.log('Department deleted');
+              alert('Department deleted')
             },
             error: (err) => {
               console.error('Error deleting department:', err);

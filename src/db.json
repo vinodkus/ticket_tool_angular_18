@@ -45,12 +45,6 @@
       "createdDate": "2024-06-23"
     },
     {
-      "id": "7cec",
-      "deptId": 10,
-      "deptName": "qq",
-      "createdDate": "2024-06-15"
-    },
-    {
       "id": "c36c",
       "deptId": 12,
       "deptName": "qq",
@@ -61,12 +55,6 @@
       "deptId": 13,
       "deptName": "wrrr",
       "createdDate": "2024-06-23"
-    },
-    {
-      "id": "4513",
-      "deptId": 14,
-      "deptName": "wwff",
-      "createdDate": "2024-06-08"
     }
   ]
 }
