@@ -2,12 +2,13 @@ import { Component, OnInit, inject } from '@angular/core';
 import { MasterService, Department } from '../../services/master.service';
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { from } from 'rxjs';
 
 @Component({
   selector: 'app-department',
   standalone: true,
-  imports: [DatePipe, FormsModule,AsyncPipe],
+  imports: [ DatePipe, FormsModule,AsyncPipe],
 
   templateUrl: './department.component.html',
   styleUrl: './department.component.css',
