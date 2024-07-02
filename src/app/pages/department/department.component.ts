@@ -34,7 +34,7 @@ export class DepartmentComponent implements OnInit {
       this.deptList = data;
     });
   }
-
+ 
   saveDept(): void {
     debugger;
 
@@ -51,21 +51,27 @@ export class DepartmentComponent implements OnInit {
   }
 
   onEdit(item:Department):void{
-        this.newDepartment = item;
+    debugger;
+    this.newDepartment = { ...item };
+    debugger;
   }
   resetDept():void{
     debugger;
       this.newDepartment = { deptId: 0, deptName: '', createdDate: new Date() };
   }
   updateDept(department: Department): void {
+    debugger;
+    console.log('Updating department:', department);
     this.masterSrv.updateDept(department).subscribe((updatedDepartment) => {
       const index = this.deptList.findIndex(
-        (d) => d.deptId === updatedDepartment.deptId
+        (d) => d.id === updatedDepartment.id
       );
       if (index !== -1) {
         this.deptList[index] = updatedDepartment;
       }
     });
+    this.getAllDepts();
+
   }
 
   deleteDept(deptId: number): void {

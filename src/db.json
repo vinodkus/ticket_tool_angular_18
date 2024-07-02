@@ -21,16 +21,16 @@
   ],
   "departments": [
     {
-      "deptId": 1,
-      "deptName": "IT",
-      "createdDate": "2024-03-28",
-      "id": "1781"
+      "id": "5022",
+      "deptId": 5,
+      "deptName": "Service",
+      "createdDate": "2024-07-27"
     },
     {
-      "id": "0c0c",
-      "deptId": 2,
-      "deptName": "HR",
-      "createdDate": "2024-06-30"
+      "id": "4491",
+      "deptId": 6,
+      "deptName": "CS",
+      "createdDate": "2024-07-14"
     }
   ]
 }

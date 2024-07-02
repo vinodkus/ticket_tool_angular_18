@@ -65,7 +65,12 @@ export class MasterService {
 
   // Update an existing department
   updateDept(department: Department): Observable<Department> {
-    const url = `${this.apiDeptUrl}/${department.deptId}`;
+    debugger;
+    if (!department.id) {
+      throw new Error('Department id is required for update');
+    }
+    debugger;
+    const url = `${this.apiDeptUrl}/${department.id}`;
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
     return this.http.put<Department>(url, department, { headers });
   }

@@ -65,8 +65,15 @@
                         <button class="btn btn-secondary" (click)="resetDept()">Reset</button>
                     </div>
                     <div class="col-6 text-center">
-                        <button class="btn btn-success"
+                        @if(this.newDepartment.deptId == 0)
+                        {
+                            <button class="btn btn-success"
                             (click)="saveDept()">Save Dept</button>
+                        }@else {                            
+                        <button class="btn btn-success"
+                        (click)="updateDept(this.newDepartment)">Update Dept</button>
+                        }
+                        
                     </div>
                 </div>
             </div>
