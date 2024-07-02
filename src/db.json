@@ -29,8 +29,14 @@
     {
       "id": "4491",
       "deptId": 6,
-      "deptName": "CS",
+      "deptName": "CS1",
       "createdDate": "2024-07-14"
+    },
+    {
+      "id": "11a0",
+      "deptId": 7,
+      "deptName": "IT",
+      "createdDate": "2024-07-20"
     }
   ]
 }
