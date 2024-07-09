@@ -36,11 +36,10 @@ export class DepartmentComponent implements OnInit {
   }
  
   saveDept(): void {
-    debugger;
-
-    const maxDeptId = Math.max(
-      ...this.deptList.map((department) => department.deptId)
-    );
+    debugger;  
+    const maxDeptId = this.deptList.length > 0
+    ? Math.max(...this.deptList.map((department) => department.deptId))
+    : 0;
     this.newDepartment.deptId = maxDeptId + 1;
     this.masterSrv.createNewDept(this.newDepartment).subscribe((department) => {
       this.deptList.push(department);
