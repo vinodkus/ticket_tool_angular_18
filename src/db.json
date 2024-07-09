@@ -21,16 +21,24 @@
   ],
   "departments": [
     {
-      "id": "5022",
-      "deptId": 5,
-      "deptName": "Service",
-      "createdDate": "2024-07-27"
+      "id": "b419",
+      "deptId": 1,
+      "deptName": "HR",
+      "createdDate": "2024-07-17"
     },
     {
-      "id": "4491",
-      "deptId": 6,
-      "deptName": "CS",
-      "createdDate": "2024-07-14"
+      "id": "75eb",
+      "deptId": 2,
+      "deptName": "IT",
+      "createdDate": "2024-07-28"
+    }
+  ],
+  "parentCategories": [
+    {
+      "id": "5d36",
+      "categoryId": 1,
+      "categoryName": "ddd",
+      "deptId": "1"
     }
   ]
 }
