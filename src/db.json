@@ -31,6 +31,12 @@
       "deptId": 2,
       "deptName": "IT",
       "createdDate": "2024-07-19"
+    },
+    {
+      "id": "3a8b",
+      "deptId": 3,
+      "deptName": "Medical",
+      "createdDate": "2024-07-10"
     }
   ],
   "parentCategories": [
@@ -44,6 +50,24 @@
       "id": "a190",
       "categoryId": 3,
       "categoryName": "HR",
+      "deptId": "2"
+    },
+    {
+      "id": "f7d8",
+      "categoryId": 4,
+      "categoryName": "EE",
+      "deptId": "3"
+    },
+    {
+      "id": "12a1",
+      "categoryId": 6,
+      "categoryName": "yy",
+      "deptId": "2"
+    },
+    {
+      "id": "d386",
+      "categoryId": 7,
+      "categoryName": "gdss",
       "deptId": "2"
     }
   ]

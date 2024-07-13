@@ -20,13 +20,9 @@ export class ParentcategoryComponent implements OnInit {
   newParentCategory:ParentCategory={
     categoryId:0,
     categoryName:'',
-    deptId:0
+    deptId:0,
   };
-  newDepartment: Department = {
-    deptId: 0,
-    deptName: '',
-    createdDate: new Date(),
-  };
+
 
   ngOnInit(): void {
     this.getAllParentCategory();
@@ -47,7 +43,12 @@ export class ParentcategoryComponent implements OnInit {
     });
     
   }
- 
+  getDeptName(deptId: number | string): string {
+    debugger;
+    const numericDeptId = typeof deptId === 'string' ? parseInt(deptId, 10) : deptId;
+    const dept = this.deptList.find(d => d.deptId === numericDeptId);
+    return dept ? dept.deptName : '';
+  }
   saveParentCategory(): void {
     debugger;
 

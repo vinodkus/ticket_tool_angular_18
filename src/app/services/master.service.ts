@@ -90,7 +90,6 @@ export class MasterService {
 
 //Parent Category Service
 getAllParentCategory(): Observable<ParentCategory[]> {
-  // this.url = `${this.apiUrl}departments`;
    return this.http.get<ParentCategory[]>(this.apiParentCatUrl);
  }
  
@@ -119,6 +118,10 @@ deleteParentCategoryById(id: string): Observable<void> {
   return this.http.delete<void>(url);
 }
 //Parent Category Service
+
+//Child Category Service
+//Child Category Service
+
 
 
 }

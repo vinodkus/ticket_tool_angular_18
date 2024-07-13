@@ -4,6 +4,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DepartmentComponent } from './pages/department/department.component';
 import { ParentcategoryComponent } from './pages/parentcategory/parentcategory.component';
+import { ChildCategoryComponent } from './pages/child-category/child-category.component';
 
 
 export const routes: Routes = [
@@ -32,6 +33,11 @@ export const routes: Routes = [
             {
                 path:'parent-category',
                 component:ParentcategoryComponent
+            }
+            ,
+            {
+                path:'child-category',
+                component:ChildCategoryComponent
             }
 
             //parent-category
