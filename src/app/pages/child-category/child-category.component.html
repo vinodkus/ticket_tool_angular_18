@@ -1,1 +1,81 @@
-<p>child-category works!</p>
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header bg-success">
+                Parent Category
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>Sr No</th>
+                                    <th>Category Name</th>
+                                    <th>Parent Category Name</th>
+                                    <th class="text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for(item of childCatList; track $index)
+                                {
+                                <tr>
+                                    <td>{{$index+1}}</td>
+                                    <td>{{item.childCategoryName }}</td>
+                                    <td>{{getParentCategoryName(item.parentCategoryId)}}</td>
+                                    <td class="text-center">
+                                        <button
+                                            class="btn btn-primary" (click)="onEdit(item)">Edit</button>
+                                        <button
+                                            class="btn btn-danger mx-2" (click)="deleteChildCategory(item.childCategoryId)">Delete</button>
+                                    </td>
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header bg-success">
+                New Department
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-12">
+                        <label for>Child Category Name</label>
+                        <input type="text" [(ngModel)]="newChildCategory.childCategoryName"
+                            class="form-control">
+                    </div>
+                    <div class="col-12">
+                        <label for>Parent Category</label>
+                        <select class="form-control" [(ngModel)]="newChildCategory.parentCategoryId">
+                            @for (item of parentCatList; track $index) {
+                            <option [value]="item.parentCategoryId" >{{item.parentCategoryName}}</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="row pt-3">
+                    <div class="col-6 text-center">
+                        <button class="btn btn-secondary" (click)="resetChildCategory()">Reset</button>
+                    </div>
+                    <div class="col-6 text-center">
+                        @if(this.newChildCategory.childCategoryId == 0)
+                        {
+                            <button class="btn btn-success"
+                            (click)="saveChildCategory()">Save Child Category</button>
+                        }@else {                            
+                        <button class="btn btn-success"
+                        (click)="updateChildCategory(this.newChildCategory)">Update Child Category</button>
+                        }
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

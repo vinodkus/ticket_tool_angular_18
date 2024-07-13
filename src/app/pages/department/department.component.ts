@@ -46,7 +46,7 @@ export class DepartmentComponent implements OnInit {
       this.newDepartment = { deptId: 0, deptName: '', createdDate: new Date() }; // Reset the form
     
     });
-    this.getAllDepts();
+   // this.getAllDepts();
   }
 
   onEdit(item:Department):void{

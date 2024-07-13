@@ -11,7 +11,7 @@
                             <thead>
                                 <tr>
                                     <th>Sr No</th>
-                                    <th>Category Name</th>
+                                    <th>Parent Category Name</th>
                                     <th>Dept Name</th>
                                     <th class="text-center">Action</th>
                                 </tr>
@@ -21,13 +21,13 @@
                                 {
                                 <tr>
                                     <td>{{$index+1}}</td>
-                                    <td>{{item.categoryName }}</td>
+                                    <td>{{item.parentCategoryName }}</td>
                                     <td>{{getDeptName(item.deptId)}}</td>
                                     <td class="text-center">
                                         <button
                                             class="btn btn-primary" (click)="onEdit(item)">Edit</button>
                                         <button
-                                            class="btn btn-danger mx-2" (click)="deleteParentCategory(item.categoryId)">Delete</button>
+                                            class="btn btn-danger mx-2" (click)="deleteParentCategory(item.parentCategoryId)">Delete</button>
                                     </td>
                                 </tr>
                                 }
@@ -47,7 +47,7 @@
                 <div class="row">
                     <div class="col-12">
                         <label for>Parent Category Name</label>
-                        <input type="text" [(ngModel)]="newParentCategory.categoryName"
+                        <input type="text" [(ngModel)]="newParentCategory.parentCategoryName"
                             class="form-control">
                     </div>
                     <div class="col-12">
@@ -64,7 +64,7 @@
                         <button class="btn btn-secondary" (click)="resetParentCategory()">Reset</button>
                     </div>
                     <div class="col-6 text-center">
-                        @if(this.newParentCategory.categoryId == 0)
+                        @if(this.newParentCategory.parentCategoryId == 0)
                         {
                             <button class="btn btn-success"
                             (click)="saveParentCategory()">Save Parent Category</button>

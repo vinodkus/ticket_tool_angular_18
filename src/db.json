@@ -37,38 +37,76 @@
       "deptId": 3,
       "deptName": "Medical",
       "createdDate": "2024-07-10"
+    },
+    {
+      "id": "ecea",
+      "deptId": 4,
+      "deptName": "Account",
+      "createdDate": "2024-07-13"
     }
   ],
   "parentCategories": [
     {
-      "id": "5d36",
-      "categoryId": 2,
-      "categoryName": "IT",
-      "deptId": "1"
-    },
-    {
-      "id": "a190",
-      "categoryId": 3,
-      "categoryName": "HR",
+      "id": "71ff",
+      "parentCategoryId": 2,
+      "parentCategoryName": "DOTNET",
       "deptId": "2"
     },
     {
-      "id": "f7d8",
-      "categoryId": 4,
-      "categoryName": "EE",
+      "id": "ec4f",
+      "parentCategoryId": 3,
+      "parentCategoryName": "Heart",
       "deptId": "3"
     },
     {
-      "id": "12a1",
-      "categoryId": 6,
-      "categoryName": "yy",
-      "deptId": "2"
+      "id": "6fdb",
+      "parentCategoryId": 4,
+      "parentCategoryName": "Account PCAT1",
+      "deptId": "4"
     },
     {
-      "id": "d386",
-      "categoryId": 7,
-      "categoryName": "gdss",
-      "deptId": "2"
+      "id": "0498",
+      "parentCategoryId": 5,
+      "parentCategoryName": "Acc PCat2",
+      "deptId": "4"
+    },
+    {
+      "id": "99b7",
+      "parentCategoryId": 6,
+      "parentCategoryName": "HR pcat1",
+      "deptId": "1"
+    }
+  ],
+  "childCategories": [
+    {
+      "id": "a63b",
+      "childCategoryId": 1,
+      "childCategoryName": "ASP.NET",
+      "parentCategoryId": "2"
+    },
+    {
+      "id": "b109",
+      "parentCategoryId": "2",
+      "childCategoryName": "AJAX",
+      "childCategoryId": 2
+    },
+    {
+      "id": "626d",
+      "childCategoryId": 3,
+      "childCategoryName": "H1",
+      "parentCategoryId": "3"
+    },
+    {
+      "id": "698a",
+      "childCategoryId": 4,
+      "childCategoryName": "H2",
+      "parentCategoryId": "3"
+    },
+    {
+      "id": "f74d",
+      "childCategoryId": 5,
+      "childCategoryName": "acc c cat 1",
+      "parentCategoryId": "4"
     }
   ]
 }

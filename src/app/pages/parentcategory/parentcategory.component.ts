@@ -18,8 +18,8 @@ export class ParentcategoryComponent implements OnInit {
   deptList: Department[] = [];
   parentCatList: ParentCategory[]=[];
   newParentCategory:ParentCategory={
-    categoryId:0,
-    categoryName:'',
+    parentCategoryId:0,
+    parentCategoryName:'',
     deptId:0,
   };
 
@@ -52,17 +52,18 @@ export class ParentcategoryComponent implements OnInit {
   saveParentCategory(): void {
     debugger;
 
-    const maxCategoryId = this.parentCatList.length>0? Math.max(
-      ...this.parentCatList.map((pcat) => pcat.categoryId)
+    const maxParentCategoryId = this.parentCatList.length>0? Math.max(
+      ...this.parentCatList.map((pcat) => pcat.parentCategoryId)
     ):0;
     debugger;
-    this.newParentCategory.categoryId = maxCategoryId + 1;
+    this.newParentCategory.parentCategoryId = maxParentCategoryId + 1;
     this.masterSrv.createNewParentCategory(this.newParentCategory).subscribe((pCat) => {
       this.parentCatList.push(pCat);
-      this.newParentCategory = { categoryId:0,categoryName:'',deptId:0 }; // Reset the form
+      this.newParentCategory = { parentCategoryId:0,parentCategoryName:'',deptId:0 }; // Reset the form
     
     });
-    this.getAllParentCategory();
+
+  //  this.getAllParentCategory();
   }
 
   onEdit(item:ParentCategory):void{
@@ -72,7 +73,7 @@ export class ParentcategoryComponent implements OnInit {
   }
   resetParentCategory():void{
     debugger;
-      this.newParentCategory = { categoryId:0,categoryName:'',deptId:0 };
+      this.newParentCategory = { parentCategoryId:0,parentCategoryName:'',deptId:0 };
   }
   updateParentCategory(parentCategory: ParentCategory): void {
     debugger;
@@ -89,18 +90,18 @@ export class ParentcategoryComponent implements OnInit {
 
   }
 
-  deleteParentCategory(categoryId: number): void {
+  deleteParentCategory(parentCategoryId: number): void {
     debugger;
-    console.log('Deleting Parent Category with ID:', categoryId);
-    this.masterSrv.getParentCategoryByCategoryId(categoryId).subscribe({
+    console.log('Deleting Parent Category with ID:', parentCategoryId);
+    this.masterSrv.getParentCategoryByCategoryId(parentCategoryId).subscribe({
       next: (parentCategories) => {
         if (parentCategories.length > 0) {
           const parentCategory = parentCategories[0];
-          const parentCategoryName = parentCategory.categoryName;
+          const parentCategoryName = parentCategory.parentCategoryName;
           this.masterSrv.deleteParentCategoryById(parentCategory.id!).subscribe({
             next: () => {
               this.parentCatList = this.parentCatList.filter(
-                (parentCat) => parentCat.categoryId !== categoryId
+                (parentCat) => parentCat.parentCategoryId !== parentCategoryId
               );
               console.log('Parent Category deleted');
               this.showDeleteAlert(parentCategoryName);

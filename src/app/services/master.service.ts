@@ -12,9 +12,15 @@ export interface Department {
 
 export interface ParentCategory{
   id?: string;
-  categoryId: number; 
-  categoryName: string;
+  parentCategoryId: number; 
+  parentCategoryName: string;
   deptId:number;
+}
+export interface ChildCategory {
+  id?: string;
+  childCategoryId: number;
+  childCategoryName: string;
+  parentCategoryId:number;
 }
 @Injectable({
   providedIn: 'root',
@@ -22,6 +28,8 @@ export interface ParentCategory{
 export class MasterService {
   apiDeptUrl: string = 'http://localhost:3000/departments';
   apiParentCatUrl: string = 'http://localhost:3000/parentCategories';
+  apiChildCatUrl: string = 'http://localhost:3000/childCategories';
+
   url: string = 'http://localhost:3000/';
   constructor(private http: HttpClient) {}
   login(obj: any) {
@@ -120,6 +128,33 @@ deleteParentCategoryById(id: string): Observable<void> {
 //Parent Category Service
 
 //Child Category Service
+getAllChildCategory(): Observable<ChildCategory[]> {
+  return this.http.get<ChildCategory[]>(this.apiChildCatUrl);
+}
+createNewChildCategory(childCategory: ChildCategory): Observable<ChildCategory> {
+  const url = `${this.url}childCategories`;
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.post<ChildCategory>(url, childCategory, { headers });
+}
+getChildCategoryByChildCategoryId(chiildCategoryId: number): Observable<ChildCategory[]> {
+  debugger;
+  const url = `${this.apiChildCatUrl}?childCategoryId=${chiildCategoryId}`;
+  return this.http.get<ChildCategory[]>(url);
+}
+deleteChildCategoryById(id: string): Observable<void> {
+  const url = `${this.apiChildCatUrl}/${id}`;
+  return this.http.delete<void>(url);
+}
+updateChildCategory(childCategory: ChildCategory): Observable<ChildCategory> {
+  debugger;
+  if (!childCategory.id) {
+    throw new Error('Department id is required for update');
+  }
+  debugger;
+  const url = `${this.apiChildCatUrl}/${childCategory.id}`;
+  const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  return this.http.put<ChildCategory>(url, childCategory, { headers });
+}
 //Child Category Service
 
 
